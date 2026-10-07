@@ -20,6 +20,25 @@ export function extractInstagramShortcode(urlOrCode: string): string {
     return match[1];
   }
 
+/**
+ * Converts numeric Instagram media ID to shortcode
+ */
+export function instagramIdToShortcode(idStr: string): string {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+  try {
+    let id = BigInt(idStr);
+    let shortcode = "";
+    while (id > 0n) {
+      const rem = Number(id % 64n);
+      shortcode = alphabet[rem] + shortcode;
+      id = id / 64n;
+    }
+    return shortcode;
+  } catch {
+    return "";
+  }
+}
+
   return "";
 }
 

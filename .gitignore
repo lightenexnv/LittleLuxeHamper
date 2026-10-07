@@ -48,4 +48,9 @@ prisma/*.db-journal
 
 # raw scraped media archive
 little_luxehamper/
+little_luxe_hamper/
+
+# large video files (fallback to Instagram reel embed / posters)
+*.mp4
+public/media/videos/
 

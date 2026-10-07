@@ -4,16 +4,22 @@ import { getAdminSession } from "@/lib/auth";
 import { CouponSchema } from "@/lib/validators";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export async function GET() {
-  const session = await getAdminSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function GET(_req: Request) {
+  try {
+    const session = await getAdminSession();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const coupons = await db.coupon.findMany({
-    orderBy: { code: "asc" },
-  });
+    const coupons = await db.coupon.findMany({
+      orderBy: { code: "asc" },
+    });
 
-  return NextResponse.json(coupons);
+    return NextResponse.json(coupons);
+  } catch (error) {
+    console.error("GET coupons error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {

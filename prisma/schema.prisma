@@ -19,7 +19,8 @@ model Product {
   stock          Int            @default(25)
   isCustomizable Boolean        @default(false)
   isActive       Boolean        @default(true)
-  isSample       Boolean        @default(true)
+  isSample       Boolean        @default(false)
+  needsReview    Boolean        @default(false)
   contents       String         // JSON stringified array of contents
   tags           String         // Comma-separated tags
   seoTitle       String?

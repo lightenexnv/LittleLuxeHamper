@@ -6,17 +6,23 @@ import { ReelSchema } from "@/lib/validators";
 import { extractInstagramShortcode } from "@/lib/instagram";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export async function GET() {
-  const session = await getAdminSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function GET(_req: Request) {
+  try {
+    const session = await getAdminSession();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const reels = await db.reel.findMany({
-    include: { product: { select: { name: true, slug: true } } },
-    orderBy: { sort: "asc" },
-  });
+    const reels = await db.reel.findMany({
+      include: { product: { select: { name: true, slug: true } } },
+      orderBy: { sort: "asc" },
+    });
 
-  return NextResponse.json(reels);
+    return NextResponse.json(reels);
+  } catch (error) {
+    console.error("GET reels error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {

@@ -6,21 +6,27 @@ import { ProductSchema } from "@/lib/validators";
 import { extractInstagramShortcode } from "@/lib/instagram";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export async function GET() {
-  const session = await getAdminSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function GET(_req: Request) {
+  try {
+    const session = await getAdminSession();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const products = await db.product.findMany({
-    include: {
-      images: { orderBy: { sort: "asc" } },
-      reels: true,
-      collections: true,
-    },
-    orderBy: { createdAt: "desc" },
-  });
+    const products = await db.product.findMany({
+      include: {
+        images: { orderBy: { sort: "asc" } },
+        reels: true,
+        collections: true,
+      },
+      orderBy: { createdAt: "desc" },
+    });
 
-  return NextResponse.json(products);
+    return NextResponse.json(products);
+  } catch (error) {
+    console.error("GET products error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {
