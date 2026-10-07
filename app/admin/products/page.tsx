@@ -5,6 +5,8 @@ import { Plus, Trash2, Edit, ExternalLink, Sparkles, Package } from "lucide-reac
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/money";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminProductsPage() {
   const products = await db.product.findMany({
     include: {

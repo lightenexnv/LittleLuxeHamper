@@ -15,6 +15,8 @@ import { db } from "@/lib/db";
 import { getAdminSession } from "@/lib/auth";
 import { formatPrice } from "@/lib/money";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
   const session = await getAdminSession();
   if (!session) redirect("/admin/login");

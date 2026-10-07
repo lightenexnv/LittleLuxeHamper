@@ -2,6 +2,8 @@ import React from "react";
 import { MessageSquare, Building2, Mail, Phone, Calendar } from "lucide-react";
 import { db } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminEnquiriesPage() {
   const enquiries = await db.enquiry.findMany({
     orderBy: { createdAt: "desc" },

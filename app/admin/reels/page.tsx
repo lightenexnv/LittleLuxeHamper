@@ -4,6 +4,8 @@ import { Instagram, Plus, ExternalLink, Sparkles } from "lucide-react";
 import { db } from "@/lib/db";
 import { AdminReelAddForm } from "@/components/admin/AdminReelAddForm";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminReelsPage() {
   const reels = await db.reel.findMany({
     include: {

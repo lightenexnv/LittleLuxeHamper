@@ -4,6 +4,8 @@ import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/money";
 import { AdminCouponAddForm } from "@/components/admin/AdminCouponAddForm";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminCouponsPage() {
   const coupons = await db.coupon.findMany({
     orderBy: { code: "asc" },

@@ -11,6 +11,8 @@ interface ConfirmationPageProps {
   };
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function OrderConfirmationPage({ params }: ConfirmationPageProps) {
   const order = await db.order.findUnique({
     where: { id: params.id },
