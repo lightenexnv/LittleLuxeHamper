@@ -23,11 +23,28 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, .font-serif {
     font-family: var(--font-cormorant), Georgia, serif;
     letter-spacing: -0.015em;
+  }
+
+  /* Mobile-first optical typography adjustments */
+  @media (max-width: 640px) {
+    body {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    h1 {
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+    }
+    h2 {
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+    }
   }
 }
 

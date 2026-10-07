@@ -5,45 +5,45 @@ import { Sparkles, ArrowRight, Heart, Truck, ShieldCheck, Gift } from "lucide-re
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-cream via-sand/40 to-cream pt-6 pb-20 sm:pt-10 sm:pb-28">
+    <section className="relative overflow-hidden bg-gradient-to-b from-cream via-sand/40 to-cream pt-4 pb-14 sm:pt-10 sm:pb-28">
       {/* Subtle paper grain texture */}
       <div className="absolute inset-0 bg-grain opacity-60 pointer-events-none" />
 
       {/* Decorative ambient color orbs */}
-      <div className="absolute top-12 left-1/4 w-96 h-96 bg-blush/30 rounded-full blur-3xl pointer-events-none -translate-x-1/2" />
-      <div className="absolute bottom-8 right-10 w-80 h-80 bg-gold-light/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-12 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-blush/30 rounded-full blur-3xl pointer-events-none -translate-x-1/2" />
+      <div className="absolute bottom-8 right-10 w-60 sm:w-80 h-60 sm:h-80 bg-gold-light/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center">
           {/* Left: Text & Editorial Story */}
-          <div className="lg:col-span-6 space-y-6 text-center lg:text-left z-10">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-center lg:text-left z-10">
             {/* Atelier Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-gold/30 text-wine shadow-sm backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5 text-gold shrink-0 animate-pulse" />
-              <span className="text-xs font-semibold tracking-wider uppercase font-sans">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/90 border border-gold/30 text-wine shadow-xs backdrop-blur-sm">
+              <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-gold shrink-0 animate-pulse" />
+              <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase font-sans">
                 India&apos;s Boutique Gifting Atelier
               </span>
             </div>
 
-            {/* Confident, oversized headline with italic flair */}
-            <h1 className="font-serif text-5xl sm:text-6xl xl:text-7xl font-bold text-mulberry tracking-tight leading-[1.08]">
-              Unboxing <br />
+            {/* Confident, oversized headline with italic flair - proportional on mobile */}
+            <h1 className="font-serif text-[2.5rem] leading-[1.08] sm:text-6xl xl:text-7xl font-bold text-mulberry tracking-tight">
+              Unboxing <br className="hidden sm:inline" />
               <span className="italic font-normal text-rose-dark">Unforgettable</span>{" "}
-              <span className="text-wine underline decoration-gold/40 decoration-wavy decoration-1 underline-offset-8">
+              <span className="text-wine underline decoration-gold/40 decoration-wavy decoration-1 underline-offset-4 sm:underline-offset-8">
                 Love.
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-ink/80 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-normal">
+            <p className="text-sm sm:text-lg text-ink/80 max-w-lg lg:max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-normal px-1 sm:px-0">
               Every Little Luxe Hamper is hand-curated with fairy lights, handcrafted everlasting florals, 
               luxe keepsakes, and personalized handwritten cards. Delivered with panache across India.
             </p>
 
-            {/* CTAs with magnetic hover & shimmer */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            {/* CTAs with magnetic hover & shimmer - full width finger targets on mobile */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
               <Link
                 href="/shop"
-                className="shimmer-btn w-full sm:w-auto px-8 py-4 rounded-pill bg-wine text-cream hover:bg-wine-light font-medium text-sm flex items-center justify-center gap-2.5 shadow-luxe hover:shadow-luxe-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                className="shimmer-btn w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-pill bg-wine text-cream hover:bg-wine-light font-semibold text-sm flex items-center justify-center gap-2 sm:gap-2.5 shadow-luxe hover:shadow-luxe-lg transition-all duration-300"
               >
                 <Gift className="w-4 h-4 text-gold-light" />
                 <span>Explore Curated Hampers</span>
@@ -53,24 +53,24 @@ export function Hero() {
                 href="https://wa.me/919876543210?text=Hi%20Little%20Luxe%20Hamper!%20I'd%20love%20to%20customize%20a%20bespoke%20gifting%20hamper."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-7 py-4 rounded-pill border border-gold/50 bg-white/80 hover:bg-blush/40 text-wine font-medium text-sm text-center shadow-sm transition-all duration-200"
+                className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 rounded-pill border border-gold/50 bg-white/90 hover:bg-blush/40 text-wine font-semibold text-sm text-center shadow-xs transition-all duration-200"
               >
                 Custom Order on WhatsApp ↗
               </Link>
             </div>
 
             {/* Trust Chips */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-5 sm:gap-7 text-xs text-muted font-medium border-t border-blush/50">
-              <div className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-wine" />
+            <div className="pt-3 sm:pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-7 text-[11px] sm:text-xs text-muted font-medium border-t border-blush/50">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <Truck className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-wine shrink-0" />
                 <span>Express Pan-India Delivery</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Heart className="w-4 h-4 text-rose-dark" />
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <Heart className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-rose-dark shrink-0" />
                 <span>100% Handpacked &amp; Sealed</span>
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-gold-dark" />
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <ShieldCheck className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-gold-dark shrink-0" />
                 <span>Verified Handcrafted Quality</span>
               </div>
             </div>
@@ -132,16 +132,16 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Floating Instagram Follower Tag */}
-              <div className="absolute -bottom-6 left-6 sm:left-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-luxe border border-gold/30 flex items-center gap-3 z-20">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-gold to-rose flex items-center justify-center text-white shrink-0 shadow-sm">
-                  <Sparkles className="w-4 h-4" />
+              {/* Floating Instagram Follower Tag - Positioned safely on mobile without blocking buttons */}
+              <div className="absolute -bottom-5 left-4 sm:left-10 bg-white/95 backdrop-blur-md px-3.5 py-2 sm:py-2.5 rounded-2xl shadow-luxe border border-gold/30 flex items-center gap-2.5 sm:gap-3 z-20">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-gold to-rose flex items-center justify-center text-white shrink-0 shadow-sm">
+                  <Sparkles className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                 </div>
                 <div className="text-left">
-                  <p className="font-serif font-bold text-wine text-xs sm:text-sm">
+                  <p className="font-serif font-bold text-wine text-xs sm:text-sm leading-tight">
                     @little_luxehamper
                   </p>
-                  <p className="text-[10px] text-muted">Real client unboxings &amp; stories</p>
+                  <p className="text-[9px] sm:text-[10px] text-muted">Real client unboxings &amp; stories</p>
                 </div>
               </div>
             </div>

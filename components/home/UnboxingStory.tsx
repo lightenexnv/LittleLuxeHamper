@@ -75,24 +75,24 @@ export function UnboxingStory() {
   }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-cream via-sand/20 to-cream border-y border-blush/60 relative">
+    <section className="py-14 sm:py-24 bg-gradient-to-b from-cream via-sand/20 to-cream border-y border-blush/60 relative">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-gold/40 text-wine text-xs font-semibold uppercase tracking-widest mb-3 shadow-xs">
+        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-gold/40 text-wine text-[11px] sm:text-xs font-semibold uppercase tracking-widest mb-2.5 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-gold" />
             <span>The Unboxing Ritual</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
             How Every Little Luxe Box Comes to Life
           </h2>
-          <p className="text-sm sm:text-base text-muted mt-2 font-sans">
+          <p className="text-xs sm:text-base text-muted mt-1.5 sm:mt-2 font-sans px-2">
             A seamless journey of craftsmanship from our atelier in India straight to their doorstep.
           </p>
         </div>
 
         {/* Two-Column Scroll Story: Left Sticky Preview, Right Scrolling Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Sticky Visual Showcase (Desktop) */}
           <div className="lg:col-span-6 sticky top-28 hidden lg:block">
             <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden shadow-luxe-lg border-4 border-white bg-sand/40">
@@ -125,7 +125,7 @@ export function UnboxingStory() {
           </div>
 
           {/* Scrolling Steps */}
-          <div className="lg:col-span-6 space-y-12 sm:space-y-20 py-4">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-16 py-2 sm:py-4">
             {steps.map((s, idx) => {
               const Icon = s.icon;
               const isActive = activeStep === idx;
@@ -135,10 +135,10 @@ export function UnboxingStory() {
                   ref={(el) => {
                     stepRefs.current[idx] = el;
                   }}
-                  className={`p-6 sm:p-8 rounded-gift transition-all duration-500 border ${
+                  className={`p-5 sm:p-8 rounded-2xl sm:rounded-gift transition-all duration-500 border ${
                     isActive
-                      ? "bg-white shadow-luxe-lg border-gold/40 scale-[1.02]"
-                      : "bg-white/60 shadow-sm border-blush/60 opacity-80"
+                      ? "bg-white shadow-luxe-lg border-gold/40 scale-[1.01] sm:scale-[1.02]"
+                      : "bg-white/80 shadow-xs border-blush/60 sm:opacity-80"
                   }`}
                 >
                   {/* Mobile Preview Image */}

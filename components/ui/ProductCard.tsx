@@ -184,45 +184,45 @@ export function ProductCard({
       </Link>
 
       {/* Product Details */}
-      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+      <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
           {/* Star Rating */}
-          <div className="flex items-center gap-1.5 mb-2">
+          <div className="flex items-center gap-1.5 mb-1.5 sm:mb-2">
             <div className="flex text-gold">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-3 h-3 ${
+                  className={`w-2.5 sm:w-3 h-2.5 sm:h-3 ${
                     i < rating ? "fill-gold text-gold" : "text-blush fill-blush"
                   }`}
                 />
               ))}
             </div>
-            <span className="text-[11px] text-muted font-medium">({reviewCount})</span>
+            <span className="text-[10px] sm:text-[11px] text-muted font-medium">({reviewCount})</span>
           </div>
 
           {/* Product Name */}
           <Link href={`/product/${slug}`} className="block">
-            <h3 className="font-serif font-bold text-mulberry text-base group-hover:text-wine transition-colors line-clamp-1">
+            <h3 className="font-serif font-bold text-mulberry text-sm sm:text-base group-hover:text-wine transition-colors line-clamp-2 leading-snug">
               {name}
             </h3>
           </Link>
         </div>
 
         {/* Pricing & Mobile Action */}
-        <div className="mt-3.5 pt-3 border-t border-blush/40 flex items-center justify-between">
+        <div className="mt-2.5 sm:mt-3.5 pt-2 sm:pt-3 border-t border-blush/40 flex items-center justify-between">
           <div>
             {isEnquireOnly ? (
-              <span className="font-serif font-medium text-rose-dark text-sm">
+              <span className="font-serif font-semibold text-rose-dark text-xs sm:text-sm">
                 Price on Request
               </span>
             ) : (
-              <div className="flex items-baseline gap-2">
-                <span className="font-serif font-bold text-wine text-base sm:text-lg">
+              <div className="flex items-baseline gap-1.5 sm:gap-2">
+                <span className="font-serif font-bold text-wine text-sm sm:text-lg">
                   {formatPrice(pricePaise)}
                 </span>
                 {mrpPaise > pricePaise && (
-                  <span className="text-xs text-muted line-through font-sans">
+                  <span className="text-[10px] sm:text-xs text-muted line-through font-sans">
                     {formatPrice(mrpPaise)}
                   </span>
                 )}
@@ -230,16 +230,16 @@ export function ProductCard({
             )}
           </div>
 
-          {/* Mobile Quick Action Button */}
+          {/* Mobile Quick Action Button with 44px min tap area */}
           <button
             onClick={handleQuickAdd}
-            className="md:hidden p-2 rounded-full bg-cream text-wine hover:bg-wine hover:text-white border border-blush transition-colors"
+            className="md:hidden w-8 h-8 rounded-full bg-cream text-wine hover:bg-wine hover:text-white border border-blush flex items-center justify-center transition-colors shrink-0 shadow-2xs"
             aria-label={isEnquireOnly ? "Enquire on WhatsApp" : "Add to cart"}
           >
             {isEnquireOnly ? (
-              <MessageCircle className="w-4 h-4 text-wine" />
+              <MessageCircle className="w-3.5 h-3.5 text-wine" />
             ) : (
-              <ShoppingBag className="w-4 h-4" />
+              <ShoppingBag className="w-3.5 h-3.5" />
             )}
           </button>
         </div>

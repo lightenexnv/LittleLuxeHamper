@@ -54,18 +54,18 @@ export default async function HomePage() {
       <ReelsStrip reels={homeReels} />
 
       {/* 5. Signature Bestsellers Grid with Real Photos & Crossfade */}
-      <section className="py-20 bg-cream relative">
+      <section className="py-12 sm:py-20 bg-cream relative">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-12">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold font-bold mb-1.5">
+              <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs uppercase tracking-widest text-gold font-bold mb-1 sm:mb-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Loved Across India</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
                 Signature Handcrafted Hampers
               </h2>
-              <p className="text-sm text-muted mt-2 max-w-xl font-sans">
+              <p className="text-xs sm:text-sm text-muted mt-1.5 sm:mt-2 max-w-xl font-sans">
                 Each curation is assembled by hand, wrapped in satin ribbon, and illuminated with warm fairy lights.
               </p>
             </div>

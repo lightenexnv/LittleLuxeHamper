@@ -43,20 +43,20 @@ export function InstagramGrid() {
   const profileUrl = `https://instagram.com/${handle}`;
 
   return (
-    <section className="py-20 bg-white border-t border-blush/60 relative">
+    <section className="py-12 sm:py-20 bg-white border-t border-blush/60 relative">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-rose-dark font-bold mb-2">
-            <Instagram className="w-4 h-4" />
+        <div className="text-center max-w-xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs uppercase tracking-widest text-rose-dark font-bold mb-2">
+            <Instagram className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
             <span>Join Our Gifting Community</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
             Follow @{handle}
           </h2>
-          <p className="text-sm text-muted mt-2 font-sans">
+          <p className="text-xs sm:text-sm text-muted mt-1.5 sm:mt-2 font-sans px-2">
             Behind-the-scenes hamper styling, bespoke customer stories, and unboxing reveals.
           </p>
-          <div className="mt-5">
+          <div className="mt-4 sm:mt-5">
             <a
               href={profileUrl}
               target="_blank"

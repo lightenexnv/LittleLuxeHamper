@@ -51,23 +51,23 @@ const occasions: OccasionItem[] = [
 
 export function OccasionTiles() {
   return (
-    <section className="py-20 bg-white border-b border-blush/60 relative">
+    <section className="py-12 sm:py-20 bg-white border-b border-blush/60 relative">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blush/40 text-wine text-xs font-semibold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-gold" />
+        <div className="text-center max-w-xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blush/40 text-wine text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-gold shrink-0" />
             <span>Curated Gifting Collections</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
             Curated For Every Milestone
           </h2>
-          <p className="text-sm text-muted mt-2 font-sans">
+          <p className="text-xs sm:text-sm text-muted mt-1.5 sm:mt-2 font-sans px-2">
             Thoughtfully styled gift sets handcrafted for life&apos;s most cherished celebrations.
           </p>
         </div>
 
-        {/* Responsive grid of arch-masked cards with hover zoom & label slide */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+        {/* Responsive grid of arch-masked cards: 2-col balanced mobile, 3-col tablet, 6-col desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-6">
           {occasions.map((occ) => (
             <Link
               key={occ.name}
