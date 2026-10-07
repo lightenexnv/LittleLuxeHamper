@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FBF6F1;
+  --blush: #F3DDD6;
+  --rose: #C9877C;
+  --wine: #6B2D3C;
+  --gold: #B8935A;
+  --ink: #2A2024;
+  --muted: #7A6A6E;
+  --white: #FFFFFF;
+}
+
+@layer base {
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-cormorant), Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Touch targets and accessibility */
+button, a {
+  touch-action: manipulation;
+}
+
+/* Custom horizontal scroll bar styling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pause animation on hover */
+.pause-on-hover:hover {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}

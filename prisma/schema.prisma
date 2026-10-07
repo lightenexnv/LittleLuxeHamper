@@ -1,0 +1,181 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id             String         @id @default(cuid())
+  slug           String         @unique
+  name           String
+  shortDesc      String
+  description    String
+  pricePaise     Int
+  mrpPaise       Int
+  sku            String         @unique
+  stock          Int            @default(25)
+  isCustomizable Boolean        @default(false)
+  isActive       Boolean        @default(true)
+  isSample       Boolean        @default(true)
+  contents       String         // JSON stringified array of contents
+  tags           String         // Comma-separated tags
+  seoTitle       String?
+  seoDesc        String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  images         ProductImage[]
+  reels          Reel[]
+  reviews        Review[]
+  orderItems     OrderItem[]
+  collections    Collection[]   @relation("ProductCollections")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String
+  sort      Int      @default(0)
+}
+
+model Reel {
+  id           String   @id @default(cuid())
+  productId    String?
+  product      Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  instagramUrl String
+  shortcode    String
+  posterUrl    String
+  videoUrl     String?
+  caption      String
+  sort         Int      @default(0)
+  showOnHome   Boolean  @default(false)
+  createdAt    DateTime @default(now())
+}
+
+model Collection {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  name      String
+  type      String    // "occasion" | "budget" | "category"
+  intro     String
+  imageUrl  String?
+  sort      Int       @default(0)
+  products  Product[] @relation("ProductCollections")
+}
+
+model AddOn {
+  id         String   @id @default(cuid())
+  name       String
+  pricePaise Int
+  imageUrl   String
+  isActive   Boolean  @default(true)
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  number         String      @unique
+  status         String      @default("PLACED") // PLACED, CONFIRMED, PACKED, SHIPPED, OUT_FOR_DELIVERY, DELIVERED, CANCELLED, FAILED
+  paymentStatus  String      @default("PENDING") // PENDING, PAID, FAILED, REFUNDED
+  paymentMethod  String      // UPI, CARD, NETBANKING, COD
+  subtotal       Int
+  discount       Int         @default(0)
+  shipping       Int         @default(0)
+  codFee         Int         @default(0)
+  total          Int
+  customerName   String
+  customerPhone  String
+  customerEmail  String
+  recipientName  String?
+  recipientPhone String?
+  address        String      // JSON string of address details
+  deliveryDate   String?
+  giftMessage    String?
+  couponCode     String?
+  trackingUrl    String?
+  awb            String?
+  notes          String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  items          OrderItem[]
+  payments       Payment[]
+}
+
+model OrderItem {
+  id           String   @id @default(cuid())
+  orderId      String
+  order        Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId    String?
+  product      Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  nameSnapshot String
+  pricePaise   Int
+  qty          Int      @default(1)
+  addOns       String?  // JSON string
+}
+
+model Payment {
+  id                String   @id @default(cuid())
+  orderId           String
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider          String   // dummy, razorpay
+  providerPaymentId String?
+  status            String   // SUCCESS, FAILED, PENDING
+  raw               String?  // JSON response
+  createdAt         DateTime @default(now())
+}
+
+model Coupon {
+  id         String    @id @default(cuid())
+  code       String    @unique
+  type       String    // PERCENT, FLAT
+  value      Int
+  minOrder   Int       @default(0)
+  expiresAt  DateTime?
+  usageLimit Int?
+  usedCount  Int       @default(0)
+  isActive   Boolean   @default(true)
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name      String
+  rating    Int
+  body      String
+  photoUrl  String?
+  approved  Boolean  @default(true)
+  isSample  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  type      String   // contact, corporate
+  name      String
+  email     String
+  phone     String
+  company   String?
+  quantity  Int?
+  message   String
+  payload   String?  // JSON
+  createdAt DateTime @default(now())
+}
+
+model Pincode {
+  pin         String  @id
+  city        String
+  state       String
+  serviceable Boolean @default(true)
+  etaDays     Int     @default(3)
+}
+
+model Settings {
+  key   String @id
+  value String
+}

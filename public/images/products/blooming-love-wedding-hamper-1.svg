@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F5"/>
+      <stop offset="100%" stop-color="#F5E4DC"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.1"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#4e1f2b" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+
+  <!-- Hamper Box Illustration -->
+  <g filter="url(#shadow)">
+    <!-- Main Box Body -->
+    <rect x="160" y="280" width="480" height="460" rx="24" fill="#FFFFFF" fill-opacity="0.95"/>
+    <!-- Lid border -->
+    <rect x="140" y="250" width="520" height="80" rx="16" fill="#FBF6F1" stroke="#E3ABA2" stroke-width="2"/>
+    
+    <!-- Satin Ribbon Vertical -->
+    <rect x="375" y="250" width="50" height="490" fill="#B8935A"/>
+    <line x1="385" y1="250" x2="385" y2="740" stroke="#FFF" stroke-opacity="0.3" stroke-width="2"/>
+
+    <!-- Satin Ribbon Horizontal -->
+    <rect x="140" y="470" width="520" height="50" fill="#B8935A"/>
+    <line x1="140" y1="480" x2="660" y2="480" stroke="#FFF" stroke-opacity="0.3" stroke-width="2"/>
+
+    <!-- Bow Accent in Gold -->
+    <circle cx="400" cy="495" r="32" fill="#B8935A"/>
+    <circle cx="400" cy="495" r="24" fill="#96743E"/>
+    <circle cx="400" cy="495" r="14" fill="#D4B27C"/>
+    
+    <!-- Ribbon tails -->
+    <path d="M 385 520 Q 350 600 330 660 L 370 660 Q 395 610 405 525 Z" fill="#B8935A"/>
+    <path d="M 415 520 Q 450 600 470 660 L 430 660 Q 405 610 395 525 Z" fill="#B8935A"/>
+  </g>
+
+  <!-- Tag Sample Overlay -->
+  <rect x="280" y="140" width="240" height="44" rx="22" fill="#6B2D3C" fill-opacity="0.9"/>
+  <text x="400" y="168" font-family="Georgia, serif" font-size="16" font-weight="600" fill="#FBF6F1" text-anchor="middle" letter-spacing="3">LITTLE LUXE ATELIER</text>
+
+  <!-- Typography -->
+  <text x="400" y="820" font-family="Georgia, serif" font-size="34" font-weight="bold" fill="#2A2024" text-anchor="middle">Blooming Love</text>
+  <text x="400" y="865" font-family="sans-serif" font-size="18" font-weight="500" fill="#7A6A6E" text-anchor="middle" letter-spacing="1">Trousseau Keepsake & Scented Mist</text>
+
+  <!-- SAMPLE Badge -->
+  <rect x="630" y="40" width="130" height="34" rx="6" fill="#B8935A"/>
+  <text x="695" y="62" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.5">SAMPLE</text>
+</svg>
