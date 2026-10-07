@@ -8,6 +8,8 @@ const PincodeQuerySchema = z.object({
   pin: z.string().regex(/^[1-9][0-9]{5}$/, "Invalid 6-digit Indian PIN code"),
 });
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);

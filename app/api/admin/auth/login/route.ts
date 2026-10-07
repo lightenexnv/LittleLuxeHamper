@@ -4,6 +4,8 @@ import { AdminLoginSchema } from "@/lib/validators";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { createAdminSession } from "@/lib/auth";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";

@@ -5,6 +5,8 @@ import { getAdminSession } from "@/lib/auth";
 import { ProductSchema } from "@/lib/validators";
 import { extractInstagramShortcode } from "@/lib/instagram";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const session = await getAdminSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
