@@ -13,7 +13,9 @@ export interface ReelItem {
   instagramUrl: string;
   shortcode: string;
   posterUrl: string;
+  videoUrl?: string | null;
   caption: string;
+  isSample?: boolean;
   product?: {
     slug: string;
     name: string;
@@ -76,14 +78,20 @@ export function ReelsStrip({ reels }: { reels: ReelItem[] }) {
               {/* Gradient Dark Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-black/30" />
 
-              {/* Instagram & SAMPLE Badges */}
+              {/* Instagram & Status Badges */}
               <div className="absolute top-3 inset-x-3 flex items-center justify-between">
                 <span className="p-1.5 rounded-full bg-black/40 text-white backdrop-blur-sm">
                   <Instagram className="w-3.5 h-3.5" />
                 </span>
-                <span className="bg-gold/90 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
-                  SAMPLE
-                </span>
+                {reel.isSample ? (
+                  <span className="bg-gold/90 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                    SAMPLE
+                  </span>
+                ) : (
+                  <span className="bg-wine/90 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                    ORIGINAL
+                  </span>
+                )}
               </div>
 
               {/* Center Play Button Facade */}
@@ -126,6 +134,7 @@ export function ReelsStrip({ reels }: { reels: ReelItem[] }) {
           onClose={() => setActiveReel(null)}
           shortcode={activeReel.shortcode}
           instagramUrl={activeReel.instagramUrl}
+          videoUrl={activeReel.videoUrl}
           caption={activeReel.caption}
           productSlug={activeReel.product?.slug}
           productName={activeReel.product?.name}
@@ -134,3 +143,4 @@ export function ReelsStrip({ reels }: { reels: ReelItem[] }) {
     </section>
   );
 }
+

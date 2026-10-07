@@ -10,6 +10,7 @@ export interface ReelModalProps {
   onClose: () => void;
   shortcode: string;
   instagramUrl: string;
+  videoUrl?: string | null;
   caption?: string;
   productSlug?: string;
   productName?: string;
@@ -20,6 +21,7 @@ export function ReelModal({
   onClose,
   shortcode,
   instagramUrl,
+  videoUrl,
   caption,
   productSlug,
   productName,
@@ -82,15 +84,25 @@ export function ReelModal({
           </button>
         </div>
 
-        {/* Facade iframe - mounted strictly on modal open */}
-        <div className="relative w-full aspect-[9/16] max-h-[580px] bg-black">
-          <iframe
-            src={embedUrl}
-            className="w-full h-full border-0"
-            allowTransparency={true}
-            allow="encrypted-media"
-            title="Instagram Reel Video"
-          />
+        {/* Facade player - mounted strictly on modal open */}
+        <div className="relative w-full aspect-[9/16] max-h-[580px] bg-black flex items-center justify-center">
+          {videoUrl ? (
+            <video
+              src={videoUrl}
+              controls
+              autoPlay
+              playsInline
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <iframe
+              src={embedUrl}
+              className="w-full h-full border-0"
+              allowTransparency={true}
+              allow="encrypted-media"
+              title="Instagram Reel Video"
+            />
+          )}
         </div>
 
         {/* Footer info & CTA */}

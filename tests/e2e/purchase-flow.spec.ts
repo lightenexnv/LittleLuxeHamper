@@ -12,8 +12,9 @@ test.describe("Full E-Commerce Customer Journey", () => {
     const reelsHeading = page.getByRole("heading", { name: /Unboxing Real Emotions/i });
     await expect(reelsHeading).toBeVisible();
 
-    // 2. Navigate to PDP
-    const firstProduct = page.locator("a[href^='/product/']").first();
+    // 2. Navigate to PDP via stable Bestsellers ProductCard
+    const firstProduct = page.locator("[data-testid='product-card-link']").first();
+    await firstProduct.scrollIntoViewIfNeeded();
     await firstProduct.click();
 
     // Verify PDP title and gallery

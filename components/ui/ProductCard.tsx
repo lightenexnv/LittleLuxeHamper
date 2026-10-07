@@ -69,7 +69,11 @@ export function ProductCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Product Image Frame (4:5 Aspect Ratio) */}
-      <Link href={`/product/${slug}`} className="relative block aspect-[4/5] overflow-hidden bg-blush/10">
+      <Link
+        href={`/product/${slug}`}
+        data-testid="product-card-link"
+        className="relative block aspect-[4/5] overflow-hidden bg-blush/10"
+      >
         <Image
           src={isHovered ? secondaryImage : primaryImage}
           alt={images[0]?.alt || name}
