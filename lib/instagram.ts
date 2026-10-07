@@ -20,6 +20,9 @@ export function extractInstagramShortcode(urlOrCode: string): string {
     return match[1];
   }
 
+  return "";
+}
+
 /**
  * Converts numeric Instagram media ID to shortcode
  */
@@ -37,9 +40,6 @@ export function instagramIdToShortcode(idStr: string): string {
   } catch {
     return "";
   }
-}
-
-  return "";
 }
 
 /**

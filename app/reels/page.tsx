@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateVideoObjectJsonLd } from "@/lib/seo";
 import { ReelsStrip } from "@/components/home/ReelsStrip";
 import { ReelsGalleryGrid } from "@/components/reels/ReelsGalleryGrid";
 
@@ -24,8 +24,22 @@ export default async function ReelsPage() {
     orderBy: { sort: "asc" },
   });
 
+  const videoObjectJsonLd = reels.slice(0, 5).map((r) =>
+    generateVideoObjectJsonLd({
+      name: r.caption || "Little Luxe Hamper Reel",
+      description: r.caption || "Artisanal hamper unboxing by Little Luxe Hamper",
+      thumbnailUrl: r.posterUrl,
+      contentUrl: r.videoUrl || undefined,
+      embedUrl: `https://www.instagram.com/reel/${r.shortcode}/embed/`,
+    })
+  );
+
   return (
     <div className="bg-cream min-h-screen py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoObjectJsonLd) }}
+      />
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         <div className="text-center max-w-xl mx-auto mb-12">
           <span className="text-xs font-bold text-gold uppercase tracking-widest">

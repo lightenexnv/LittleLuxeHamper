@@ -9,26 +9,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FBF6F1",
-        blush: "#F3DDD6",
+        cream: "#FBF7F2",
+        sand: "#F4ECE4",
+        blush: {
+          light: "#FBF0EC",
+          DEFAULT: "#F2DFD7",
+          dark: "#E3C8BD",
+        },
         rose: {
-          DEFAULT: "#C9877C",
-          light: "#E3ABA2",
-          dark: "#A8655A",
+          light: "#EBB2BF",
+          DEFAULT: "#C97A8E",
+          dark: "#9E4B5E",
         },
         wine: {
-          DEFAULT: "#6B2D3C",
-          light: "#873C4E",
-          dark: "#4E1F2B",
+          light: "#7A3546",
+          DEFAULT: "#54212F",
+          dark: "#35141D",
+        },
+        mulberry: {
+          DEFAULT: "#381B26",
+          dark: "#250F18",
         },
         gold: {
-          DEFAULT: "#B8935A",
-          light: "#D4B27C",
-          dark: "#96743E",
+          light: "#EAD098",
+          DEFAULT: "#C59E55",
+          dark: "#987532",
         },
-        ink: "#2A2024",
-        muted: "#7A6A6E",
-        success: "#2E7D5B",
+        ink: "#23181D",
+        muted: "#76646B",
+        success: "#26734E",
         error: "#B3382C",
       },
       fontFamily: {
@@ -36,11 +45,14 @@ const config: Config = {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        luxe: "0 8px 30px rgba(107, 45, 60, 0.10)",
-        "luxe-lg": "0 14px 40px rgba(107, 45, 60, 0.16)",
+        luxe: "0 10px 30px -10px rgba(56, 27, 38, 0.12)",
+        "luxe-lg": "0 20px 45px -12px rgba(56, 27, 38, 0.18)",
+        "luxe-card": "0 4px 20px -2px rgba(56, 27, 38, 0.08), 0 1px 3px rgba(56, 27, 38, 0.04)",
+        "gold-glow": "0 0 25px rgba(197, 158, 85, 0.25)",
       },
       borderRadius: {
-        card: "12px",
+        card: "16px",
+        gift: "22px",
         pill: "999px",
       },
       keyframes: {
@@ -48,14 +60,27 @@ const config: Config = {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
+        },
         fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        marquee: "marquee 35s linear infinite",
-        "fade-in": "fadeIn 0.3s ease-out forwards",
+        marquee: "marquee 45s linear infinite",
+        "marquee-reverse": "marquee-reverse 45s linear infinite",
+        float: "float 6s ease-in-out infinite",
+        "fade-in": "fadeIn 0.4s ease-out forwards",
       },
     },
   },

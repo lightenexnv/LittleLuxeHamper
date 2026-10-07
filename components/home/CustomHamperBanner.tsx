@@ -56,11 +56,11 @@ export function CustomHamperBanner() {
 
           <div className="lg:col-span-5 relative h-72 sm:h-96 lg:h-full min-h-[320px] bg-wine-dark/40">
             <Image
-              src="/images/products/royal-velvet-anniversary-hamper-2.svg"
-              alt="Custom luxury gift hamper styling showcase"
+              src="/media/images/3954806144118936893_25237603949.webp"
+              alt="Custom luxury gift hamper styling showcase by Little Luxe Hamper"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover opacity-90 hover:opacity-100 transition-opacity"
+              className="object-cover opacity-95 hover:opacity-100 transition-opacity"
             />
           </div>
         </div>

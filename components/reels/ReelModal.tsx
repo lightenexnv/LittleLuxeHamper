@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, ExternalLink } from "lucide-react";
+import { X, ExternalLink, ChevronLeft, ChevronRight, Instagram } from "lucide-react";
 import { buildInstagramEmbedUrl, buildInstagramUrlWithUtm } from "@/lib/instagram";
 import { trackInstagramClick } from "@/lib/analytics";
 
@@ -14,6 +14,10 @@ export interface ReelModalProps {
   caption?: string;
   productSlug?: string;
   productName?: string;
+  onPrev?: () => void;
+  onNext?: () => void;
+  hasPrev?: boolean;
+  hasNext?: boolean;
 }
 
 export function ReelModal({
@@ -25,10 +29,16 @@ export function ReelModal({
   caption,
   productSlug,
   productName,
+  onPrev,
+  onNext,
+  hasPrev,
+  hasNext,
 }: ReelModalProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft" && onPrev) onPrev();
+      if (e.key === "ArrowRight" && onNext) onNext();
     };
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -38,7 +48,7 @@ export function ReelModal({
       document.body.style.overflow = "unset";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, onPrev, onNext]);
 
   if (!isOpen) return null;
 
@@ -58,21 +68,47 @@ export function ReelModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="reel-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/80 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-fade-in"
     >
-      <div
-        className="absolute inset-0"
-        onClick={onClose}
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0" onClick={onClose} aria-hidden="true" />
 
-      <div className="relative z-10 w-full max-w-sm sm:max-w-md bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      {/* Prev Navigation Button */}
+      {hasPrev && onPrev && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onPrev();
+          }}
+          className="hidden md:flex absolute left-4 lg:left-8 z-20 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 text-white items-center justify-center backdrop-blur-md transition-all"
+          aria-label="Previous reel"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+      )}
+
+      {/* Next Navigation Button */}
+      {hasNext && onNext && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onNext();
+          }}
+          className="hidden md:flex absolute right-4 lg:right-8 z-20 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 text-white items-center justify-center backdrop-blur-md transition-all"
+          aria-label="Next reel"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      )}
+
+      <div className="relative z-10 w-full max-w-sm sm:max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh] border border-white/20">
         {/* Header */}
         <div className="p-3.5 bg-cream border-b border-blush flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose animate-ping" />
+            <span className="p-1 rounded-full bg-gradient-to-tr from-gold to-rose text-white">
+              <Instagram className="w-3.5 h-3.5" />
+            </span>
             <span id="reel-modal-title" className="font-serif font-bold text-wine text-sm">
-              @little_luxehamper Reel
+              @little_luxehamper
             </span>
           </div>
           <button
@@ -84,8 +120,8 @@ export function ReelModal({
           </button>
         </div>
 
-        {/* Facade player - mounted strictly on modal open */}
-        <div className="relative w-full aspect-[9/16] max-h-[580px] bg-black flex items-center justify-center">
+        {/* Video / Embed Player */}
+        <div className="relative w-full aspect-[9/16] max-h-[560px] bg-black flex items-center justify-center">
           {videoUrl ? (
             <video
               src={videoUrl}
@@ -105,7 +141,7 @@ export function ReelModal({
           )}
         </div>
 
-        {/* Footer info & CTA */}
+        {/* Footer info & Gradient Instagram CTA */}
         <div className="p-4 bg-white border-t border-blush/60 space-y-3">
           {caption && (
             <p className="text-xs text-ink/80 line-clamp-2 leading-relaxed font-sans">
@@ -117,7 +153,7 @@ export function ReelModal({
             {productSlug && productName && (
               <a
                 href={`/product/${productSlug}`}
-                className="flex-1 py-2 px-3 text-center rounded-pill border border-wine text-wine text-xs font-semibold hover:bg-blush/30 transition-colors"
+                className="flex-1 py-2.5 px-3 text-center rounded-pill border border-wine text-wine text-xs font-semibold hover:bg-blush/30 transition-colors flex items-center justify-center"
               >
                 Shop {productName}
               </a>
@@ -127,12 +163,12 @@ export function ReelModal({
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleInstagramClick}
-              className="flex-1 py-2 px-3 text-center rounded-pill text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-all hover:opacity-95"
+              className="flex-1 py-2.5 px-3 text-center rounded-pill text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-md transition-all hover:opacity-95 transform hover:-translate-y-0.5"
               style={{
                 background: "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
               }}
             >
-              <span>Watch on Instagram</span>
+              <span>Watch on Instagram ↗</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

@@ -178,3 +178,31 @@ export function generateFaqJsonLd(faqs: { question: string; answer: string }[]) 
     })),
   };
 }
+
+export function generateVideoObjectJsonLd({
+  name,
+  description,
+  thumbnailUrl,
+  contentUrl,
+  embedUrl,
+  uploadDate,
+}: {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  contentUrl?: string;
+  embedUrl?: string;
+  uploadDate?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    thumbnailUrl: thumbnailUrl.startsWith("http") ? thumbnailUrl : `${SITE_URL}${thumbnailUrl}`,
+    contentUrl: contentUrl ? (contentUrl.startsWith("http") ? contentUrl : `${SITE_URL}${contentUrl}`) : undefined,
+    embedUrl,
+    uploadDate: uploadDate || new Date().toISOString(),
+  };
+}
+

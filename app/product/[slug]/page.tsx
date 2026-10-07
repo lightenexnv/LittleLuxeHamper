@@ -187,17 +187,25 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
               {/* Price Block */}
               <div className="mt-4 p-4 rounded-2xl bg-white border border-blush/70 flex items-baseline gap-3">
-                <span className="font-serif text-3xl font-bold text-wine">
-                  {formatPrice(product.pricePaise)}
-                </span>
-                {product.mrpPaise > product.pricePaise && (
-                  <span className="text-sm text-muted line-through">
-                    {formatPrice(product.mrpPaise)}
-                  </span>
-                )}
-                {discount > 0 && (
-                  <span className="bg-wine text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                    {discount}% OFF
+                {product.pricePaise > 0 && !product.needsReview ? (
+                  <>
+                    <span className="font-serif text-3xl font-bold text-wine">
+                      {formatPrice(product.pricePaise)}
+                    </span>
+                    {product.mrpPaise > product.pricePaise && (
+                      <span className="text-sm text-muted line-through">
+                        {formatPrice(product.mrpPaise)}
+                      </span>
+                    )}
+                    {discount > 0 && (
+                      <span className="bg-wine text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                        {discount}% OFF
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <span className="font-serif text-2xl font-bold text-rose-dark">
+                    Price Available on Request
                   </span>
                 )}
                 <span className="text-[11px] text-muted ml-auto font-medium">
@@ -221,6 +229,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 mrpPaise: product.mrpPaise,
                 stock: product.stock,
                 primaryImageUrl: product.images[0]?.url || "",
+                needsReview: product.needsReview,
               }}
               availableAddOns={addOns}
             />
@@ -261,6 +270,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   pricePaise={p.pricePaise}
                   mrpPaise={p.mrpPaise}
                   isSample={p.isSample}
+                  needsReview={p.needsReview}
                   images={p.images}
                 />
               ))}

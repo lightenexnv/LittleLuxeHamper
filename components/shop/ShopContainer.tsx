@@ -12,6 +12,7 @@ export interface ShopProduct {
   pricePaise: number;
   mrpPaise: number;
   isSample: boolean;
+  needsReview?: boolean;
   isCustomizable: boolean;
   images: { url: string; alt: string }[];
   collections: { slug: string; name: string }[];
@@ -282,6 +283,7 @@ export function ShopContainer({
                   pricePaise={p.pricePaise}
                   mrpPaise={p.mrpPaise}
                   isSample={p.isSample}
+                  needsReview={p.needsReview}
                   images={p.images}
                 />
               ))}

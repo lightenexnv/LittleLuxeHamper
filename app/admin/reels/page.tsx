@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Instagram, Plus, ExternalLink, Sparkles } from "lucide-react";
 import { db } from "@/lib/db";
 import { AdminReelAddForm } from "@/components/admin/AdminReelAddForm";
+import { AdminReelsCsvSync } from "@/components/admin/AdminReelsCsvSync";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,9 @@ export default async function AdminReelsPage() {
 
       {/* Add New Reel Card */}
       <AdminReelAddForm products={products} />
+
+      {/* CSV Bulk Sync */}
+      <AdminReelsCsvSync />
 
       {/* Reels Grid */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-blush/80 shadow-sm space-y-4">

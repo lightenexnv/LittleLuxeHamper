@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Sparkles } from "lucide-react";
 
 interface OccasionItem {
   name: string;
@@ -11,77 +12,89 @@ interface OccasionItem {
 
 const occasions: OccasionItem[] = [
   {
-    name: "Festive & Diwali",
-    slug: "festive-gifting",
-    image: "/images/products/golden-festive-diwali-hamper-1.svg",
-    tagline: "Brass diyas & sweets",
+    name: "Everlasting Bouquets",
+    slug: "eternal-bouquets",
+    image: "/media/images/3944067240609796323_23802205442.webp",
+    tagline: "Handcrafted florals that never wilt",
   },
   {
-    name: "Birthdays",
-    slug: "birthday-hampers",
-    image: "/images/products/blush-elegance-birthday-hamper-1.svg",
-    tagline: "Joyful surprises",
+    name: "Birthday Celebrations",
+    slug: "celebration-trunks",
+    image: "/media/images/3971308063021843388_25237603949_1.webp",
+    tagline: "Illuminated keepsake trunks",
   },
   {
-    name: "Anniversary",
-    slug: "anniversary-celebration",
-    image: "/images/products/royal-velvet-anniversary-hamper-1.svg",
-    tagline: "Everlasting romance",
+    name: "Festive & Rakhi Trunks",
+    slug: "occasion-hampers",
+    image: "/media/images/3954806144118936893_25237603949.webp",
+    tagline: "Bhai & Bhabhi artisan luxury",
   },
   {
-    name: "Weddings",
-    slug: "wedding-hampers",
-    image: "/images/products/blooming-love-wedding-hamper-1.svg",
-    tagline: "Heirloom trunks",
+    name: "Eternal Rose Romance",
+    slug: "eternal-bouquets",
+    image: "/media/images/3981723450503017365_23802205442_1.webp",
+    tagline: "Crimson & ivory velvet blooms",
   },
   {
-    name: "Self-Care & Spa",
-    slug: "self-care-pamper",
-    image: "/images/products/celestial-pamper-self-care-hamper-1.svg",
-    tagline: "Calming rejuvenation",
+    name: "Gentleman's Luxury",
+    slug: "celebration-trunks",
+    image: "/media/images/4000538639129881934_25237603949_1.webp",
+    tagline: "Polo & Calvin Klein essentials",
   },
   {
-    name: "Newborn Baby",
-    slug: "baby-shower-newborn",
-    image: "/images/products/sweet-beginnings-newborn-hamper-1.svg",
-    tagline: "Tender welcomes",
+    name: "Artisan Keepsakes",
+    slug: "occasion-hampers",
+    image: "/media/images/3988244139536006049_23802205442_1.webp",
+    tagline: "Plush panda & crochet flowers",
   },
 ];
 
 export function OccasionTiles() {
   return (
-    <section className="py-14 bg-white border-b border-blush/60">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-wine">
-            Shop By Occasion
+    <section className="py-20 bg-white border-b border-blush/60 relative">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blush/40 text-wine text-xs font-semibold uppercase tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-gold" />
+            <span>Curated Gifting Collections</span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
+            Curated For Every Milestone
           </h2>
-          <p className="text-xs sm:text-sm text-muted mt-2">
-            Curated gift sets thoughtfully styled for India&apos;s most cherished celebrations.
+          <p className="text-sm text-muted mt-2 font-sans">
+            Thoughtfully styled gift sets handcrafted for life&apos;s most cherished celebrations.
           </p>
         </div>
 
-        {/* Scrollable list on mobile, responsive grid on desktop */}
-        <div className="flex md:grid md:grid-cols-6 gap-5 overflow-x-auto pb-4 md:pb-0 hide-scrollbar snap-x snap-mandatory">
+        {/* Responsive grid of arch-masked cards with hover zoom & label slide */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
           {occasions.map((occ) => (
             <Link
-              key={occ.slug}
+              key={occ.name}
               href={`/collections/${occ.slug}`}
-              className="flex flex-col items-center text-center group shrink-0 w-36 md:w-auto snap-center"
+              className="group flex flex-col items-center text-center focus:outline-none"
             >
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-blush group-hover:border-gold transition-all duration-300 shadow-sm group-hover:shadow-md bg-cream">
+              {/* Arch Mask Container */}
+              <div className="relative w-full aspect-[3/4] rounded-t-[54px] rounded-b-[20px] overflow-hidden shadow-luxe-card group-hover:shadow-luxe-lg border-2 border-blush/60 group-hover:border-gold transition-all duration-500 bg-sand/30">
                 <Image
                   src={occ.image}
                   alt={occ.name}
                   fill
-                  sizes="128px"
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 16vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+                {/* Bottom slide-up text overlay */}
+                <div className="absolute bottom-3 inset-x-2 text-white transform transition-transform duration-300 group-hover:-translate-y-1">
+                  <h3 className="font-serif font-bold text-xs sm:text-sm drop-shadow-sm leading-tight">
+                    {occ.name}
+                  </h3>
+                  <p className="text-[10px] text-white/80 line-clamp-1 mt-0.5 font-sans font-normal opacity-90">
+                    {occ.tagline}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-serif font-bold text-ink group-hover:text-wine text-sm sm:text-base mt-3 transition-colors">
-                {occ.name}
-              </h3>
-              <p className="text-[11px] text-muted">{occ.tagline}</p>
             </Link>
           ))}
         </div>

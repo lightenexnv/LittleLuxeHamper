@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --cream: #FBF6F1;
-  --blush: #F3DDD6;
-  --rose: #C9877C;
-  --wine: #6B2D3C;
-  --gold: #B8935A;
-  --ink: #2A2024;
-  --muted: #7A6A6E;
+  --cream: #FBF7F2;
+  --sand: #F4ECE4;
+  --blush: #F2DFD7;
+  --rose: #C97A8E;
+  --wine: #54212F;
+  --mulberry: #381B26;
+  --gold: #C59E55;
+  --ink: #23181D;
+  --muted: #76646B;
   --white: #FFFFFF;
 }
 
@@ -25,8 +27,39 @@
 
   h1, h2, h3, h4, .font-serif {
     font-family: var(--font-cormorant), Georgia, serif;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
+}
+
+/* Boutique Paper & Grain Texture */
+.bg-grain {
+  background-image: radial-gradient(rgba(56, 27, 38, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Shimmer Highlight Effect */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.shimmer-btn:hover::after {
+  transform: translateX(100%);
 }
 
 /* Touch targets and accessibility */
@@ -43,9 +76,25 @@ button, a {
   scrollbar-width: none;
 }
 
-/* Pause animation on hover */
-.pause-on-hover:hover {
+/* Pause animation on hover or touch */
+.pause-on-hover:hover,
+.pause-on-hover:active {
   animation-play-state: paused !important;
+}
+
+/* Scalloped / Wavy Section Divider */
+.wavy-divider-top {
+  position: relative;
+}
+.wavy-divider-top::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background-size: 32px 16px;
+  background-repeat: repeat-x;
 }
 
 @media (prefers-reduced-motion: reduce) {

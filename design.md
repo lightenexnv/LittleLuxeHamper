@@ -1,18 +1,21 @@
 # design.md — UI/UX Design System
 
 ## Brand feel
-"Soft luxury": warm, elegant, gift-box delight. Think blush + cream + gold accents, generous whitespace, editorial photography, ribbon motifs. Not loud, not cluttered. *(If client has a logo/palette, override tokens below.)*
+"Soft luxury" & "Boutique Elegance": warm, sensory gift-box delight. Derived directly from authentic product photography: deep royal wine + warm mulberry + antique rose + delicate champagne neutrals + warm metallic gold accents. Layered gradient backgrounds, subtle tactile paper/grain texture (SVG noise), scalloped section dividers, floating photo frames, and fluid continuous marquee reels.
 
-## Tokens
+## Tokens (Extracted from Authentic Brand Photography)
 ```
---cream:#FBF6F1  --blush:#F3DDD6  --rose:#C9877C  --wine:#6B2D3C
---gold:#B8935A   --ink:#2A2024    --muted:#7A6A6E  --white:#FFFFFF
---success:#2E7D5B --error:#B3382C
+--cream:#FBF6F1   --blush:#F3DDD6   --rose:#C97A8E   --rose-dark:#A74F65
+--wine:#54212F    --wine-light:#723143 --mulberry:#381B26
+--gold:#C59E55    --gold-light:#E1C588 --ink:#2A2024    --muted:#7A6A6E
+--white:#FFFFFF   --success:#2E7D5B  --error:#B3382C
 Gradient (Instagram button): linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)
-Radius: 12px cards, 999px buttons/chips   Shadow: 0 8px 30px rgba(107,45,60,.10)
+Radius: 16px cards, 24px/32px container panels, 999px buttons/chips
+Shadow: 0 12px 35px -8px rgba(84,33,47,0.12)
+Texture: Subtle paper/grain background overlay (bg-grain)
 ```
-**Typography:** Headings — *Cormorant Garamond* or *Playfair Display* (600); Body/UI — *Inter* or *DM Sans* (400/500). Scale (mobile→desktop): H1 34→56, H2 26→40, body 16, small 14. Line-height 1.5 body, 1.15 headings.
-**Spacing:** 4-pt grid; section padding 64/96px. **Container:** max 1240px.
+**Typography:** Headings — *Cormorant Garamond* / *Playfair Display* (600/700 with italic accents); Body/UI — *Inter* (400/500/600). Scale: H1 34→64px, H2 26→44px, body 16px, small 13px.
+**Spacing:** 4-pt grid; generous luxury padding 64/96px. **Container:** max 1280px.
 
 ## Layout & navigation
 - **Mobile-first.** Sticky header: logo, search icon, cart (badge), hamburger. Bottom sticky "Add to cart" bar on PDP. Floating WhatsApp button (bottom-right, offset above PDP bar).

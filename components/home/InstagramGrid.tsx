@@ -1,14 +1,39 @@
 import React from "react";
 import Image from "next/image";
 import { Instagram, ExternalLink } from "lucide-react";
+import { trackInstagramClick } from "@/lib/analytics";
 
-const instaPosts = [
-  { img: "/images/products/royal-velvet-anniversary-hamper-1.svg", alt: "Royal velvet luxury hamper packaging" },
-  { img: "/images/products/blush-elegance-birthday-hamper-1.svg", alt: "Blush elegance birthday box with candles" },
-  { img: "/images/products/golden-festive-diwali-hamper-1.svg", alt: "Festive golden diwali brass diya hamper" },
-  { img: "/images/products/celestial-pamper-self-care-hamper-1.svg", alt: "Spa and self care relaxing bath hamper" },
-  { img: "/images/products/executive-luxe-corporate-hamper-1.svg", alt: "Corporate executive gift set with pour over coffee" },
-  { img: "/images/products/sweet-beginnings-newborn-hamper-1.svg", alt: "Baby shower newborn organic cotton basket" },
+const realInstaPosts = [
+  {
+    img: "/media/images/3944067240609796323_23802205442.webp",
+    alt: "Handcrafted pipe-cleaner floral bloom bouquet with pearl ribbon by Little Luxe Hamper",
+    url: "https://www.instagram.com/p/Da8JEI-zVDj/",
+  },
+  {
+    img: "/media/images/3954806144118936893_25237603949.webp",
+    alt: "Illuminated luxury Raksha Bandhan Bhai & Bhabhi keepsake trunk",
+    url: "https://www.instagram.com/p/DbiSzwPvdU9/",
+  },
+  {
+    img: "/media/images/3971308063021843388_25237603949_1.webp",
+    alt: "Pastel pink birthday celebration trunk with bunting and jewellery",
+    url: "https://www.instagram.com/p/Dcc66R2D8O8/",
+  },
+  {
+    img: "/media/images/3981723450503017365_23802205442_1.webp",
+    alt: "Eternal velvet rose luxury bouquet in mocha wrap",
+    url: "https://www.instagram.com/little_luxehamper/",
+  },
+  {
+    img: "/media/images/3988244139536006049_23802205442_1.webp",
+    alt: "Monochrome plush panda & crochet floral bouquet",
+    url: "https://www.instagram.com/little_luxehamper/",
+  },
+  {
+    img: "/media/images/4000538639129881934_25237603949_1.webp",
+    alt: "Gentleman's signature Polo Ralph Lauren & CK illuminated trunk",
+    url: "https://www.instagram.com/little_luxehamper/",
+  },
 ];
 
 export function InstagramGrid() {
@@ -16,53 +41,59 @@ export function InstagramGrid() {
   const profileUrl = `https://instagram.com/${handle}`;
 
   return (
-    <section className="py-16 bg-white border-t border-blush/60">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-rose-dark font-bold mb-1">
+    <section className="py-20 bg-white border-t border-blush/60 relative">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-rose-dark font-bold mb-2">
             <Instagram className="w-4 h-4" />
-            <span>Join The Hamper Community</span>
+            <span>Join Our Gifting Community</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-wine">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-mulberry tracking-tight">
             Follow @{handle}
           </h2>
-          <p className="text-xs sm:text-sm text-muted mt-2">
-            Daily styling reels, packaging secrets, and new seasonal launches on our Instagram feed.
+          <p className="text-sm text-muted mt-2 font-sans">
+            Behind-the-scenes hamper styling, bespoke customer stories, and unboxing reveals.
           </p>
-          <div className="mt-4">
+          <div className="mt-5">
             <a
               href={profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-white text-xs font-semibold shadow-sm transition-all hover:opacity-95"
+              onClick={() => trackInstagramClick("profile_link", "instagram_grid_header")}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-xs font-semibold shadow-md transition-all hover:opacity-95 transform hover:-translate-y-0.5"
               style={{
                 background: "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
               }}
             >
-              <span>View Profile on Instagram</span>
+              <span>Follow On Instagram ↗</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {instaPosts.map((post, i) => (
+        {/* 6-Column Responsive Masonry/Grid of Real Instagram Posts */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          {realInstaPosts.map((post, i) => (
             <a
               key={i}
-              href={profileUrl}
+              href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square rounded-xl overflow-hidden bg-cream border border-blush/70 shadow-sm"
+              onClick={() => trackInstagramClick(post.url, "instagram_grid_tile")}
+              className="group relative aspect-square rounded-2xl overflow-hidden bg-sand/30 border border-blush/80 shadow-sm hover:shadow-luxe transition-all duration-300"
             >
               <Image
                 src={post.img}
                 alt={post.alt}
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                <Instagram className="w-6 h-6 drop-shadow-md" />
+              <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-2">
+                <Instagram className="w-6 h-6 mb-1 drop-shadow-md transform scale-90 group-hover:scale-100 transition-transform" />
+                <span className="text-[10px] font-semibold text-center drop-shadow-sm">
+                  View on Instagram ↗
+                </span>
               </div>
             </a>
           ))}

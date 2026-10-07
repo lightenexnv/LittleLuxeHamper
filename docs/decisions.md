@@ -30,4 +30,11 @@
 ## 5. Security & SEO
 - Admin authentication uses secure session cookies with `bcryptjs` password hashing and constant-time secret comparison.
 - Strict Security Headers: Content-Security-Policy (with frame-src allowing `https://www.instagram.com`), X-Frame-Options, X-Content-Type-Options, Referrer-Policy.
-- SEO: Semantic JSON-LD (Organization, WebSite, Product, BreadcrumbList, FAQPage) on all public pages, unique `<title>` (≤60 chars) and meta descriptions (≤155 chars), dynamic `sitemap.xml` and `robots.txt` blocking admin and checkout.
+- SEO: Semantic JSON-LD (Organization, WebSite, Product, BreadcrumbList, FAQPage, VideoObject) on all public pages, unique `<title>` (≤60 chars) and meta descriptions (≤155 chars), dynamic `sitemap.xml` and `robots.txt` blocking admin and checkout.
+
+## 6. Authentic Media Ingestion & Luxury UI Redesign
+- Processed 47 authentic brand photographs into responsive WebP images (400, 800, 1200, 4:5, 9:16) with blurDataURL placeholders in `/content/media-manifest.json`.
+- Removed all placeholder sample hampers and replaced with real catalog items grouped from Instagram carousel posts.
+- Products with unspecified pricing default to `pricePaise: 0` ("Price Available on Request"), swapping checkout for direct WhatsApp custom quotation.
+- Added dual-direction continuous marquee reels strip, interactive 4-step unboxing narrative, and handwritten gift-tag preview with wax seal graphic.
+- Prevented git compression memory overflow by storing lightweight WebPs in git and excluding raw `.mp4` video files from version control via `.gitignore`.
